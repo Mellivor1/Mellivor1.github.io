@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<script>
+
+	let s = prompt("Введите уравнение", '');
+	var result1 = undefined;
+	var result2 = undefined;
+	var t;
+
+	var a = 0;
+	var b = 0;
+	var c = 0;
+
+	if (s.indexOf('x^2') != -1){
+		var a = parseFloat(s.slice(0, s.indexOf('x^2')));
+	
+		if (s.indexOf('x', s.indexOf('x') + 1) != -1){
+			var b = parseFloat(s.slice(s.indexOf('x^2') + 3, s.indexOf('x', s.indexOf('x') + 1)));
+		}
+		if (s.length == s.slice(0,(s.indexOf('x', s.indexOf('x') + 1)) + 1) && s.indexOf('x', s.indexOf('x') + 1) != -1){
+			var c = parseFloat(s.slice(s.indexOf('x', s.indexOf('x') + 1) + 1,));
+		}
+		else{
+			var c = parseFloat(s.slice(s.indexOf('x^2', s.indexOf('x^2') + 3),));
+		}
+	}
+	else{
+		if (s.indexOf(0, s.indexOf('x')) != -1){
+			var b = parseFloat(s.slice(0, s.indexOf('x')));
+		}
+		if (s.length == s.slice(0, s.indexOf('x') + 1)){
+			var c = parseFloat(s.slice(s.indexOf('x') + 1,));
+		}
+	}
+	var d = b * b - 4 * a * c;
+	alert(a + " " + b + " " + c + " " + d)
+	if(a == 0 && b == 0){
+		if (c != 0){
+			alert("Нет решения");
+		}
+		else{
+			alert(result1);
+			alert(result2);
+		}
+	}
+	else if (a == 0){
+		t = -c / b;
+		alert("x=" + t)
+	}
+	else if (c == 0){
+		t = -b / a;
+		alert("x1=0; x2=" + t)
+	}
+	else if (b == 0){
+		alert("x1=" + Math.sqrt(c / a) + "i; x2=" + -Math.sqrt(c / a) + "i")
+	}
+	else{
+		if (d == 0){
+			t = -b / 2 / a;
+			alert("x=" + t)
+		}
+		else if (d > 0){
+			t = -b / 2 / a;
+			alert("x1=" + (t + (d / 2 / a)) + "; x2=" + (t + (-d / 2 / a)))
+		}
+		else{
+			t = -b / 2 / a;
+			alert("x1=" + t + "+" + (-d / 2 / a) + "i; x2=" + t + "-" + (-d / 2 / a) + "i")
+		}
+	}
+
+
+	</script>
+</body>
+</html>
